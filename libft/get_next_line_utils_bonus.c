@@ -49,7 +49,7 @@ char	*join_free(char *s1, char *s2)
 	len = length(s1, '\0') + length(s2, '\0');
 	tmp = (char *)malloc((len + 1) * sizeof(char));
 	if (tmp == NULL)
-		return (free_buddy(&ptr_s1, NULL));
+		return (better_free(&ptr_s1, NULL));
 	if (s1)
 		while (*s1)
 			tmp[i++] = *s1++;
@@ -58,7 +58,7 @@ char	*join_free(char *s1, char *s2)
 			tmp[i++] = *s2++;
 	tmp[i] = '\0';
 	if (ptr_s1)
-		free_buddy(&ptr_s1, NULL);
+		better_free(&ptr_s1, NULL);
 	return (tmp);
 }
 

@@ -23,8 +23,8 @@
 # include <limits.h>
 
 char	*cut(char *mem, int x);
-char	*free_buddy(char **str, char **str2);
-char	*butter(char *stash, char *buf);
+char	*better_free(char **str, char **str2);
+char	*loop_end(char *stash, char *buf);
 char	*get_next_line(int fd);
 size_t	length(char *str, char c);
 char	*join_free(char *s1, char *s2);

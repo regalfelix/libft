@@ -23,7 +23,7 @@ char	*cut(char *mem, int x)
 	return (tmp);
 }
 
-char	*free_buddy(char **str, char **str2)
+char	*better_free(char **str, char **str2)
 {
 	if (str && *str)
 	{
@@ -38,7 +38,7 @@ char	*free_buddy(char **str, char **str2)
 	return (NULL);
 }
 
-char	*butter(char *stash, char *buf)
+char	*loop_end(char *stash, char *buf)
 {
 	char	*tmp;
 
@@ -81,13 +81,13 @@ char	*get_next_line(int fd)
 		return (NULL);
 	buf = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!buf)
-		return (free_buddy(&stash[fd], &buf));
+		return (better_free(&stash[fd], &buf));
 	if (!filler(stash, fd, buf))
-		return (free_buddy(&(stash[fd]), &buf));
-	next_line = butter(stash[fd], buf);
+		return (better_free(&(stash[fd]), &buf));
+	next_line = loop_end(stash[fd], buf);
 	stash[fd] = cut(stash[fd], length(next_line, '\0'));
 	if ((!stash[fd] || !next_line) || (!stash[fd] && !buf[0]))
-		return (free_buddy(&(stash[fd]), &next_line));
+		return (better_free(&(stash[fd]), &next_line));
 	return (next_line);
 }
 /*

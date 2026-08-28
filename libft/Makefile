@@ -1,17 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: frey-gal <frey-gal@student.42barcelona.co  +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/04/20 01:47:03 by frey-gal          #+#    #+#              #
-#    Updated: 2025/04/20 02:32:17 by frey-gal         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
-# ================================== VARS ==================================== #
-
 NAME	= libft.a
 CC		= cc
 CFLAGS	= -Wall -Wextra -Werror
@@ -71,15 +57,13 @@ ft_lstclear_bonus.c \
 ft_lstiter_bonus.c \
 ft_lstmap_bonus.c \
 
-OBJ		= $(SRC:.c=.o)
+OBJ	= $(SRC:.c=.o)
 
 HEADERS	= \
 libft.h \
 get_next_line.h \
 get_next_line_bonus.h \
 ft_printf.h
-
-# ================================== RULES =================================== #
 
 all: $(NAME)
 

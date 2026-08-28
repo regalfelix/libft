@@ -25,9 +25,9 @@
 
 char	*cut(char *mem, int x);
 void	*ft_calloc(size_t nmemb, size_t size);
-char	*free_buddy(char **str, char **str2);
+char	*better_free(char **str, char **str2);
 char	*get_next_line(int fd);
-char	*butter(char *stash, char *buf);
+char	*loop_end(char *stash, char *buf);
 size_t	length(char *str, char c);
 char	*join_free(char *s1, char *s2);
 int		find_nl(const char *s);

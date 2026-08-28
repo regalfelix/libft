@@ -17,11 +17,11 @@ char	*cut(char *mem, int x)
 	char	*tmp;
 
 	tmp = duplen((mem + x), length(mem, '\0'));
-	free_buddy(&mem, NULL);
+	better_free(&mem, NULL);
 	return (tmp);
 }
 
-char	*free_buddy(char **str, char **str2)
+char	*better_free(char **str, char **str2)
 {
 	if (str && *str)
 	{
@@ -36,11 +36,11 @@ char	*free_buddy(char **str, char **str2)
 	return (NULL);
 }
 
-char	*butter(char *stash, char *buf)
+char	*loop_end(char *stash, char *buf)
 {
 	char	*tmp;
 
-	free_buddy(&buf, NULL);
+	better_free(&buf, NULL);
 	if (!find_nl(stash))
 		tmp = duplen(stash, length(stash, '\0'));
 	else
@@ -57,23 +57,23 @@ char	*get_next_line(int fd)
 
 	buf = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (fd < 0 || BUFFER_SIZE < 0 || !buf)
-		return (free_buddy(&buf, &stash));
+		return (better_free(&buf, &stash));
 	while (!find_nl(stash))
 	{
 		b_read = read(fd, buf, BUFFER_SIZE);
 		if (b_read < 0)
-			return (free_buddy(&stash, &buf));
+			return (better_free(&stash, &buf));
 		buf[b_read] = '\0';
 		if (b_read == 0)
 			break ;
 		stash = join_free(stash, buf);
 		if (!stash)
-			return (free_buddy(&stash, &buf));
+			return (better_free(&stash, &buf));
 	}
-	next_line = butter(stash, buf);
+	next_line = loop_end(stash, buf);
 	stash = cut(stash, length(next_line, '\0'));
 	if ((!stash || !next_line) || (!stash && !b_read))
-		return (free_buddy(&stash, &next_line));
+		return (better_free(&stash, &next_line));
 	return (next_line);
 }
 /*
